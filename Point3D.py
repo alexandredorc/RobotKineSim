@@ -15,8 +15,11 @@ class Point3D:
 
     def get2Dview(self,cam):
         xyz=copy.copy(self.coord)
+        if isinstance(xyz, list):
+            xyz=np.array(xyz)
+        if len(xyz)==3:
+            xyz=np.append(xyz, 1)
         
-        xyz.append(1)
         # tranformer le point actuel en point 3d pour la camera
       
         newdot=np.dot(cam.frame,np.array(xyz))

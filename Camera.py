@@ -3,7 +3,7 @@ import pygame
 from math import sin, cos, sqrt,pi
 import copy
 class Camera:
-    def __init__(self,view=[0,0],center=[0,0,0],depth=10,res_mile=100,dist=[1,30],zoom=1):
+    def __init__(self,view=[0,0],center=[0,0,0],depth=20,res_mile=400,dist=[1,50],zoom=1):
         
         self.frame=np.eye(4)
         self.view=view
@@ -34,6 +34,15 @@ class Camera:
         
         trans[2][3]=self.depth
         self.frame=trans
+
+
+    def keysCLick(self):
+        if pygame.key.get_pressed()[pygame.K_UP]:
+            self.res+=1
+        if pygame.key.get_pressed()[pygame.K_DOWN]:
+            if self.res>10:
+                self.res-=1
+
     
     def mouseClick(self):
         pos=pygame.mouse.get_pos()
@@ -61,7 +70,8 @@ class Camera:
             self.view[0]=pi-0.01
         else:
             self.view[0]=self.saveview[0]+(y*move/height)
-        
+
+                
 
 def normalize(vector):
     norm= sqrt(np.sum(np.square(vector)))
