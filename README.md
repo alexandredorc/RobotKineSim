@@ -44,7 +44,10 @@ Here are the main variables that can be changed, It is adviced to not change the
 - you can control the zoom of the simulation by pressing the up and down arrows
 - You can rotate the simulation by clicking and dragging on the simulation screen
 - you can change the theta values by pressing the 0 to 7 keys to change each thetas defined
-
+- you can click on each values on the bottom to change the theta's values
+- you can click on the DH button to display the DH matrix
+- from this DH matrix you can change each values (angles in radian) and add or delete a row (be careful you can only add at the end)
+- you can press the space bar to print in the terminal the traforms matrix and the DH model
 
 
 
