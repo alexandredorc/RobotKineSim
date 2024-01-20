@@ -3,18 +3,19 @@ import pygame
 from math import sin, cos, sqrt,pi
 import copy
 class Camera:
-    def __init__(self,view=[0,0],center=[0,0,0],depth=20,res_mile=400,dist=[1,50],zoom=1):
+    def __init__(self,view=[0,0],center=[0,0,0],depth=200,res_mile=2.5,focal=10,iso=False):
         
         self.frame=np.eye(4)
         self.view=view
         self.center=center
         self.depth=depth
         self.res=res_mile
-        self.zoom=zoom
-        self.dist=dist
+        self.focal=focal
         self.width=800
         self.height=600
         self.sensitive=1
+        self.iso=iso
+        self.count=0
         self.mousepoint=[-1,-1]
         self.mousestate=False
         self.saveview=copy.copy(self.view)
@@ -38,10 +39,28 @@ class Camera:
 
     def keysCLick(self):
         if pygame.key.get_pressed()[pygame.K_UP]:
-            self.res+=1
+            self.res+=0.1
         if pygame.key.get_pressed()[pygame.K_DOWN]:
-            if self.res>10:
-                self.res-=1
+            if self.res>0.1:
+                self.res-=0.1
+        
+        if pygame.key.get_pressed()[pygame.K_RIGHT]:
+            self.focal+=0.1
+        if pygame.key.get_pressed()[pygame.K_LEFT]:
+            if self.focal>1:
+                self.focal-=0.1
+        
+        if pygame.key.get_pressed()[pygame.K_i]:
+            if self.count==0:
+                self.iso= not self.iso
+                self.count=100
+            if self.count>0:
+                self.count-=1
+
+
+        
+        
+    
 
     
     def mouseClick(self):
