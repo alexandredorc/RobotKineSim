@@ -1,5 +1,6 @@
 import pygame
 import numpy as np
+from DH_display import display_trans
 
 black=(0,0,0)
 gray = (200, 200, 200)
@@ -56,6 +57,8 @@ class IHM:
             self.current_input=""
             print("Angle Inputs:", self.thetas)
             print("DH Inputs:", self.DH_mat)
+            display_trans(self.DH_mat,self.thetas)
+            
 
         elif event.key == pygame.K_BACKSPACE:
             if self.current_input != "" and self.selected_input is not None:

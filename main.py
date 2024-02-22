@@ -67,7 +67,9 @@ while running:
         displayLine(p1,p2,screen,[255,255,255],1,cam)
 
     for f in frames:
-        displayFrame(f,screen,cam) 
+        displayFrame(f,screen,cam)
+
+    
 
     ihm.display_theta()
 
